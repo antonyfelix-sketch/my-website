@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ea66cd 0%, #269ac5 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 90%;
+            margin: 50px auto;
+        }
+
+        .screen {
+            display: none;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #764ba2;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: block;
+            margin: 30px auto 0;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .hearts {
+            text-align: center;
+            font-size: 3em;
+            margin: 20px 0;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 15px;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #764ba2;
+            font-size: 1.1em;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .timeline {
+            margin: 30px 0;
+        }
+
+        .timeline-item {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .final-question {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .final-question h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .yes-button {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            font-size: 1.3em;
+            padding: 20px 50px;
+        }
+
+        .no-button {
+            background: #999;
+            font-size: 0.9em;
+            padding: 10px 30px;
+            position: relative;
+        }
+
+        .celebration {
+            text-align: center;
+        }
+
+        .celebration h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .confetti {
+            font-size: 4em;
+            margin: 20px 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #764ba2;
+            text-align: center;
+            margin: 30px 0;
+            font-size: 1.3em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Screen 1: Opening -->
+    <div class="container">
+        <div class="screen active" id="screen1">
+            <h1>Hey ithikah 👋</h1>
+            <div class="hearts">💜</div>
+            <p style="text-align: center; font-size: 1.3em;">
+                innaiku valentines dayaamla athaaa etho ennala mudunjathuu!
+            </p>
+            <p style="text-align: center;">
+                unakkkuu tha ithuuu😊
+            </p>
+            <button onclick="nextScreen(2)">Let's go!</button>
+        </div>
+
+        <!-- Screen 2: Remember When -->
+        <div class="screen" id="screen2">
+            <h2>I WANTED YOU BEFORE YOU EVEN KNEW IT 🥲</h2>
+            <div class="photo-placeholder">
+                [<img src="ed-image.jpeg"
+     style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">]
+            </div>
+            <p>
+                ithu nyabagam irukka.
+            </p>
+            <p style="text-align: center; color: #764ba2; font-size: 1.3em;">
+                That moment changed everything.
+            </p>
+            <p>
+                No one else has ever made me feel the way you did❤️
+            </p>
+            <button onclick="nextScreen(3)">Continue...</button>
+        </div>
+
+        <!-- Screen 3: Our Journey -->
+        <div class="screen" id="screen3">
+            <h2>BETWEEN CLASSES AND HOMEWORKS🌟</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <strong>11thla first time</strong>
+                    <p>scooty la irunthu vilunthuu mandaila adi pattappaa thhaaa na first pesuneyy.</p>
+                </div>
+                <div class="timeline-item">
+                    <strong>11th ending la </strong>
+                    <p>Unna maathri friend kedaikrathukku kuduthuu vachrukanum nu thonuchuh!.</p>
+                </div>
+                <div class="timeline-item">
+                    <strong>12th startinglaa</strong>
+                    <p>antha toucheyy illaaa bayamma irukkunchuuh! ipdiye twelth fulla poirummo.nu </p>
+                </div>
+                <div class="timeline-item">
+                    <strong>aproow thirumbaa atheyy touch vanthruchuu</strong>
+                    <p>nee pesunathuu nee sirikrathuuu nee tension aagurathuu ella kannukulley irukku mah!</p>
+                </div>
+            </div>
+            <div class="photo-placeholder">
+                [  [<img src="first-photo.jpeg"
+     style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">]]
+            </div>
+            <button onclick="nextScreen(4)">keep going</button>
+        </div>
+
+        <!-- Screen 4: What I Love -->
+        <div class="screen" id="screen4">
+            <h2>unta enakku puduchathulla ithuvu konjo 💕</h2>
+            <p>💜 Firstuh nee mattu tha enna high.ah feel panna vachaa</p>
+            <p>💜 Unnoda humor sense enakku pudikkum </p>
+            <p>💜 Nee sirikailaa unnoda kannu romba azhaga irukkum(promise)</p>
+            <p>💜 Thappu unthunaalum sorry.ye varaathu</p>
+            <p>💜 Unnoda irunthaa ella momentuhh romba pudikkum</p>
+            <p>💜 Sirichtey thaana vaasikiraa🧐</p>
+            <div class="hearts">💕✨💕</div>
+            <button onclick="nextScreen(5)">innum irukku nerla paakumpothu soldreyy!</button>
+        </div>
+
+        <!-- Screen 5: The Question -->
+        <div class="screen" id="screen5">
+            <div class="final-question">
+                <h2>So...</h2>
+                <div class="hearts">💝</div>
+                <p style="font-size: 1.5em; margin: 30px 0;">
+                    You mean the world to me,<br>
+                    and I can't imagine this day without you.
+                </p>
+                <div class="quote">
+                    "In you, I've found something truly special yenaa nee enga ponaalu enta vanthruvaa"
+                </div>
+                <h2 style="color: #f5576c; font-size: 2em; margin-top: 40px;">
+                    Will you be my Valentine? 💕
+                </h2>
+                <div class="photo-placeholder" style="margin: 30px auto;">
+                    [<img src="ima3.jpeg"style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">]
+                </div>
+                <div class="button-group">
+                    <button class="yes-button" onclick="celebrate()">Yes! 💕</button>
+                    <button class="no-button" onmouseover="runAway(this)" onclick="return false;">No</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 6: Celebration -->
+        <div class="screen" id="screen6">
+            <div class="celebration">
+                <div class="confetti">🎉💕🎊✨💝😍🎉</div>
+                <h1>YESSSS! 🥳</h1>
+                <div class="hearts">💕💕💕</div>
+                <p style="font-size: 1.5em; margin: 30px 0;">
+                    You just made me the happiest person ever!
+                </p>
+                <p style="font-size: 1.2em;">
+                    This Valentine's Day, and every day, you're my favorite person. 💜
+                </p>
+                <div class="quote">
+                    Thank you for being mine 😊(NANDRIGAL)
+                </div>
+               <div class="photo-placeholder">
+    <video autoplay muted loop playsinline
+           style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+        <source src="gif2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+                <div class="confetti">✨💕✨💕✨💕✨</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function nextScreen(screenNum) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById('screen' + screenNum).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function celebrate() {
+            nextScreen(6);
+            createConfetti();
+        }
+
+        function runAway(button) {
+            const x = Math.random() * (window.innerWidth - 200);
+            const y = Math.random() * (window.innerHeight - 100);
+            button.style.position = 'fixed';
+            button.style.left = x + 'px';
+            button.style.top = y + 'px';
+            button.textContent = ['No way!', 'Try again!', 'Nope!', 'Not happening!'][Math.floor(Math.random() * 4)];
+        }
+
+        function createConfetti() {
+            const confettiCount = 50;
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.left = Math.random() * window.innerWidth + 'px';
+                confetti.style.top = '-50px';
+                confetti.style.fontSize = '30px';
+                confetti.textContent = ['💕', '💜', '✨', '💝', '🎉'][Math.floor(Math.random() * 5)];
+                confetti.style.zIndex = '1000';
+                confetti.style.pointerEvents = 'none';
+                document.body.appendChild(confetti);
+                
+                const duration = 3000 + Math.random() * 2000;
+                const animation = confetti.animate([
+                    { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                    { transform: `translateY(${window.innerHeight + 100}px) rotate(${360 * (Math.random() * 2 - 1)}deg)`, opacity: 0 }
+                ], {
+                    duration: duration,
+                    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                });
+                
+                animation.onfinish = () => confetti.remove();
+            }
+        }
+    </script>
+</body>
+</html>
